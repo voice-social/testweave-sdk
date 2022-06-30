@@ -20,7 +20,7 @@ var TestWeaveRequest = /** @class */ (function () {
      */
     TestWeaveRequest.init = function (config) {
         var instance = axios_1.default.create({
-            baseURL: config.protocol + "://" + config.host + ":" + config.port,
+            baseURL: "".concat(config.protocol, "://").concat(config.host, ":").concat(config.port),
             timeout: config.timeout,
             maxContentLength: 1024 * 1024 * 512,
             headers: {

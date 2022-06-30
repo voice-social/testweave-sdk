@@ -25,7 +25,7 @@ class TestWeave implements ITestWeave {
 
     const testWeaveRequest = TestWeaveRequest.init(apiConfig);
     // overwrite the arweave.api.request method, so that it can include the requested headers
-    arweaveInstance.api.request = () => testWeaveRequest.getRequest();
+    arweaveInstance.api.request = () => testWeaveRequest.getRequest() as any;
     // overwrite the arweave.api.post method, so that it can send requests by means of the transaction manager
     arweaveInstance.api.post = (
       endpoint: string,

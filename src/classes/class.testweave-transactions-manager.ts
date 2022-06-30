@@ -66,9 +66,8 @@ export default class TestWeaveTransactionsManager implements ITestWeaveTransacti
       // get the request
       const request = this._arweave.api.request();
       // console.log(request);
-      request.defaults.baseURL = 'http://localhost';
       const response = await request.get(endpoint, config);
-      return response;
+      return response as AxiosResponse<any>;
     } catch (error) {
       return error.response;
     }
@@ -90,9 +89,6 @@ export default class TestWeaveTransactionsManager implements ITestWeaveTransacti
     try {
       // get the request
       const request = this._arweave.api.request();
-      if (endpoint === 'graphql') {
-        request.defaults.baseURL = 'http://localhost';
-      }
       const response = await request.post(endpoint, body, config);
       if (endpoint === 'tx') {
         const { id } = body as Transaction;
@@ -102,7 +98,7 @@ export default class TestWeaveTransactionsManager implements ITestWeaveTransacti
           false;
         }
       }
-      return response;
+      return response as AxiosResponse<any>;
     } catch (error) {
       return error.response;
     }
